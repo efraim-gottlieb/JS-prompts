@@ -38,7 +38,7 @@ JS-prompts/
 - גישה לנתונים לפי נתיב
 - ניקוי ושטיחת אובייקטים
 
-### ⚙️ `tools/utils-tools.js`
+### ⚡️ `tools/utils-tools.js`
 כלים עזר כלליים:
 - וולידציות (אימייל, URL, מספרים)
 - ניהול זמן ותאריכים
@@ -46,16 +46,57 @@ JS-prompts/
 - Debounce ו-Throttle
 - פורמטים שונים
 
+### 🅰️ `tools/string-tools.js`
+כלי טקסט ומחרוזות:
+- ניקוי וסניטייזציה של טקסט
+- טרנסליטרציה עברית-אנגלית
+- קיצור ועיצוב טקסט
+- חיפוש והדגשה
+- בדיקות שפה ופורמט
+
+### 🗺️ `tools/date-tools.js`
+כלי תאריכים וזמנים:
+- חישוב גיל והפרשי זמן
+- פורמט תאריך בעברית
+- זמן יחסי (לפני כמה זמן)
+- טווחי תאריכים
+- חישוב שעות עבודה
+
+### ✅ `tools/validation-tools.js`
+כלי וולידציה:
+- וולידציה ישראלית (ת"ז, טלפון)
+- אימות אימייל ו-URL
+- בדיקת חוזק סיסמאות
+- וולידציה של כרטיסי אשראי
+- בדיקות נתונים כלליות
+
+### 🗋 `tools/file-tools.js`
+כלי קבצים ונתונים:
+- קריאה/כתיבה של JSON ו-CSV
+- חיפוש בקבצים
+- ניהול תיקיות
+- גיבוי ומיזוג
+- מידע על קבצים
+
 ## 🎯 דוגמאות
 
 ### 💡 `examples/math-examples.js`
 דוגמאות לשימוש בכלים המתמטיים
 
-### 📚 `examples/array-examples.js`
+### 📋 `examples/array-examples.js`
 דוגמאות לעבודה עם מערכים
 
 ### 📝 `examples/json-examples.js`
 דוגמאות לעבודה עם JSON
+
+### 🅰️ `examples/string-examples.js`
+דוגמאות לעיבוד טקסט ומחרוזות
+
+### 🗺️ `examples/date-examples.js`
+דוגמאות לעבודה עם תאריכים וזמנים
+
+### ✅ `examples/validation-examples.js`
+דוגמאות לוולידציה ואימות נתונים
 
 ## 📊 נתוני דוגמא
 
@@ -76,10 +117,13 @@ node index.js  # הצגת מידע כללי
 
 ### הרצת דוגמאות:
 ```bash
-node examples/math-examples.js     # דוגמאות מתמטיקה
-node examples/array-examples.js    # דוגמאות מערכים
-node examples/json-examples.js     # דוגמאות JSON
-node data/sample-data.js           # נתוני דוגמא
+node examples/math-examples.js        # דוגמאות מתמטיקה
+node examples/array-examples.js       # דוגמאות מערכים
+node examples/json-examples.js        # דוגמאות JSON
+node examples/string-examples.js      # דוגמאות טקסט
+node examples/date-examples.js        # דוגמאות תאריכים
+node examples/validation-examples.js  # דוגמאות וולידציה
+node data/sample-data.js              # נתוני דוגמא
 ```
 
 ## 💡 שימוש בכלים
@@ -145,13 +189,38 @@ const id = utilsTools.generateId(8);
 console.log('מזהה חדש:', id);
 ```
 
+### עיבוד טקסט בעברית:
+```javascript
+const stringTools = require('./tools/string-tools');
+const hebrewText = "שלום עולם";
+const englishText = stringTools.hebrewToEnglish(hebrewText);
+console.log('באנגלית:', englishText); // "shalom olam"
+```
+
+### חישוב גיל:
+```javascript
+const dateTools = require('./tools/date-tools');
+const age = dateTools.calculateAge('1990-01-01');
+console.log('גיל:', age);
+```
+
+### וולידציה ישראלית:
+```javascript
+const validationTools = require('./tools/validation-tools');
+const isValidId = validationTools.validateIsraeliId('123456789');
+const isValidPhone = validationTools.validateIsraeliPhone('052-1234567');
+```
+
 ## 🎯 תרגילים מומלצים
 
 1. **מתמטיקה**: חשב סטטיסטיקות מלאות לציוני הכיתה
 2. **מערכים**: מיין סטודנטים לפי ציון וקבץ לפי עיר
 3. **JSON**: צור מערכת הגדרות עם ברירות מחדל
-4. **כלים עזר**: בנה מערכת validation לטופס
-5. **משולב**: צור דוח מלא על נתוני המכירות
+4. **טקסט**: בנה מערכת חיפוש וסינון לרשימת אנשים
+5. **תאריכים**: צור מערכת ניהול מועדים ואירועים
+6. **וולידציה**: בנה טופס הרשמה מלא עם בדיקות
+7. **קבצים**: צור מערכת ניהול נתונים עם CSV
+8. **משולב**: צור דשבורד מלא עם כל הכלים
 
 ## 💡 טיפים
 
@@ -159,6 +228,9 @@ console.log('מזהה חדש:', id);
 - **השתמש ב-`filterBy()` ו-`sortBy()`** לעבודה נוחה עם מערכים
 - **השתמש ב-`safeStringify()` ו-`safeParse()`** למניעת שגיאות
 - **השתמש ב-`deepClone()`** ליצירת עותקים עמוקים
+- **השתמש ב-`hebrewToEnglish()`** לטרנסליטרציה מהירה
+- **השתמש ב-`validateIsraeliId()`** לבדיקת תעודות זהות
+- **השתמש ב-`calculateAge()`** לחישוב גיל מדויק
 - **תמיד בדוק את התוצאות** עם `console.table()` למערכי אובייקטים
 
 ---

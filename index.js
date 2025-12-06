@@ -6,6 +6,10 @@ const mathTools = require('./tools/math-tools');
 const arrayTools = require('./tools/array-tools');
 const jsonTools = require('./tools/json-tools');
 const utilsTools = require('./tools/utils-tools');
+const stringTools = require('./tools/string-tools');
+const dateTools = require('./tools/date-tools');
+const validationTools = require('./tools/validation-tools');
+const fileTools = require('./tools/file-tools');
 
 // ייצוא מאוחד של כל הכלים
 module.exports = {
@@ -20,6 +24,18 @@ module.exports = {
     
     // כלים עזר
     utils: utilsTools,
+    
+    // כלי טקסט
+    string: stringTools,
+    
+    // כלי תאריכים
+    date: dateTools,
+    
+    // כלי וולידציה
+    validation: validationTools,
+    
+    // כלי קבצים
+    file: fileTools,
     
     // גישה ישירה לפונקציות פופולריות
     sum: mathTools.sum,
@@ -36,13 +52,17 @@ module.exports = {
     
     delay: utilsTools.delay,
     generateId: utilsTools.generateId,
-    formatDate: utilsTools.formatDate
+    formatDate: utilsTools.formatDate,
+    
+    truncate: stringTools.truncate,
+    validateEmail: validationTools.validateEmail,
+    validateIsraeliId: validationTools.validateIsraeliId
 };
 
 // מידע על הכלים הזמינים
 const toolsInfo = {
     description: 'JavaScript Tools Collection - אוסף כלים ל-JavaScript',
-    version: '1.0.0',
+    version: '2.0.0',
     tools: {
         math: {
             description: 'כלים מתמטיים',
@@ -59,6 +79,22 @@ const toolsInfo = {
         utils: {
             description: 'כלים עזר כלליים',
             functions: Object.keys(utilsTools)
+        },
+        string: {
+            description: 'כלי טקסט ומחרוזות',
+            functions: Object.keys(stringTools)
+        },
+        date: {
+            description: 'כלי תאריכים וזמנים',
+            functions: Object.keys(dateTools)
+        },
+        validation: {
+            description: 'כלי וולידציה',
+            functions: Object.keys(validationTools)
+        },
+        file: {
+            description: 'כלי קבצים ונתונים',
+            functions: Object.keys(fileTools)
         }
     }
 };
@@ -114,6 +150,22 @@ if (require.main === module) {
     // דוגמת כלים עזר
     console.log('\nמזהה ייחודי:', utilsTools.generateId());
     console.log('תאריך נוכחי:', utilsTools.formatDate(new Date()));
+    
+    // דוגמת טקסט
+    const hebrewText = "שלום עולם מ-JavaScript";
+    console.log('\nטקסט מקורי:', hebrewText);
+    console.log('באנגלית:', stringTools.hebrewToEnglish(hebrewText));
+    console.log('ראשי תיבות:', stringTools.getInitials(hebrewText));
+    
+    // דוגמת תאריכים
+    const birthDate = new Date('1990-01-01');
+    console.log('\nגיל:', dateTools.calculateAge(birthDate));
+    console.log('זמן יחסי:', dateTools.timeAgo(birthDate));
+    
+    // דוגמת וולידציה
+    const testId = '123456789';
+    console.log('\nת"ז לדוגמא:', testId);
+    console.log('תקינה:', validationTools.validateIsraeliId(testId) ? 'כן' : 'לא');
     
     console.log('\n📖 לדוגמאות מפורטות, הרץ את הקבצים בתיקיית examples/');
     console.log('📊 לנתוני דוגמא, ראה בתיקיית data/');
