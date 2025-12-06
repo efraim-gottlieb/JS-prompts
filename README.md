@@ -66,6 +66,105 @@ JS-prompts/
 - מוצרים וקטגוריות
 - תקציב משפחתי
 
+## 🚀 איך להתחיל
+
+### התקנה מהירה:
+```bash
+cd "c:\Users\Efraim\Desktop\JS-prompts"
+node index.js  # הצגת מידע כללי
+```
+
+### הרצת דוגמאות:
+```bash
+node examples/math-examples.js     # דוגמאות מתמטיקה
+node examples/array-examples.js    # דוגמאות מערכים
+node examples/json-examples.js     # דוגמאות JSON
+node data/sample-data.js           # נתוני דוגמא
+```
+
+## 💡 שימוש בכלים
+
+### ייבוא כלים ספציפיים:
+```javascript
+const mathTools = require('./tools/math-tools');
+const arrayTools = require('./tools/array-tools');
+
+// שימוש
+const grades = [85, 92, 78, 96, 88];
+console.log('ממוצע:', mathTools.average(grades));
+
+const students = [{name: "אלי", grade: 85}, {name: "דנה", grade: 92}];
+const topStudents = arrayTools.filterBy(students, s => s.grade >= 90);
+```
+
+### ייבוא מהקובץ הראשי:
+```javascript
+const tools = require('./index');
+
+// שימוש ישיר
+console.log('סכום:', tools.sum([1, 2, 3, 4, 5]));
+console.log('ממוצע:', tools.average([1, 2, 3, 4, 5]));
+
+// שימוש בקטגוריות
+const data = [{name: "טסט", value: 10}];
+const filtered = tools.array.filterBy(data, item => item.value > 5);
+```
+
+## 📖 דוגמאות מהירות
+
+### חישוב ממוצע:
+```javascript
+const mathTools = require('./tools/math-tools');
+const grades = [85, 92, 78, 96, 88];
+const average = mathTools.average(grades);
+console.log('ממוצע:', average); // 87.8
+```
+
+### סינון מערך:
+```javascript
+const arrayTools = require('./tools/array-tools');
+const students = [
+    { name: "אלי", grade: 85 },
+    { name: "דנה", grade: 92 }
+];
+const topStudents = arrayTools.filterBy(students, s => s.grade >= 90);
+```
+
+### עבודה עם JSON:
+```javascript
+const jsonTools = require('./tools/json-tools');
+const data = { name: "יוסי", grades: [85, 90] };
+const jsonString = jsonTools.safeStringify(data, 2);
+const parsed = jsonTools.safeParse(jsonString);
+```
+
+### יצירת מזהה ייחודי:
+```javascript
+const utilsTools = require('./tools/utils-tools');
+const id = utilsTools.generateId(8);
+console.log('מזהה חדש:', id);
+```
+
+## 🎯 תרגילים מומלצים
+
+1. **מתמטיקה**: חשב סטטיסטיקות מלאות לציוני הכיתה
+2. **מערכים**: מיין סטודנטים לפי ציון וקבץ לפי עיר
+3. **JSON**: צור מערכת הגדרות עם ברירות מחדל
+4. **כלים עזר**: בנה מערכת validation לטופס
+5. **משולב**: צור דוח מלא על נתוני המכירות
+
+## 💡 טיפים
+
+- **השתמש ב-`getStatistics()`** לקבלת סטטיסטיקות מלאות
+- **השתמש ב-`filterBy()` ו-`sortBy()`** לעבודה נוחה עם מערכים
+- **השתמש ב-`safeStringify()` ו-`safeParse()`** למניעת שגיאות
+- **השתמש ב-`deepClone()`** ליצירת עותקים עמוקים
+- **תמיד בדוק את התוצאות** עם `console.table()` למערכי אובייקטים
+
+---
+
+**בהצלחה בלימוד JavaScript! 🚀**
+
 ## איך להשתמש
 
 1. **העתק את הקבצים לפרויקט שלך**
